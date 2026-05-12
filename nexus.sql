@@ -73,3 +73,30 @@ VALUES
 
 SELECT * FROM cliente;
 
+SELECT pedido.id, cliente.nome, pedido.data
+FROM pedido
+INNER JOIN cliente
+ON pedido.id_cliente = cliente.id;
+
+SELECT cliente.nome, pedido.id
+FROM cliente
+LEFT OUTER JOIN pedido
+ON cliente.id = pedido.id_cliente;
+
+
+SELECT 
+cliente.nome AS cliente,
+produto.nome AS produto,
+item_pedido.quantidade,
+item_pedido.preco_unitario
+
+FROM item_pedido
+
+INNER JOIN pedido
+ON item_pedido.id_pedido = pedido.id
+
+INNER JOIN cliente
+ON pedido.id_cliente = cliente.id
+
+INNER JOIN produto
+ON item_pedido.id_produto = produto.id;
